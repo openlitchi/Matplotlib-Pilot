@@ -1,0 +1,116 @@
+{
+    "name": "matplotlib-pilot",
+    "displayName": "Matplotlib Pilot",
+    "description": "A VS Code Extension provides tools such as Matplotlib code snippets and templates.",
+    "icon": "media/matplotlibpilot.t.logo.png",
+    "version": "0.0.1",
+    "publisher": "litchi",
+    "engines": {
+        "vscode": "^1.72.0"
+    },
+    "categories": [
+        "Data Science",
+        "Visualization",
+        "Education"
+    ],
+    "keywords": [
+        "matplotlib",
+        "snippet",
+        "template",
+        "jupyter notebook",
+        "matplotlib style"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "sidebar_mp",
+                    "title": "Matplotlib Pilot",
+                    "icon": "media/matplotlibpilot.logo.svg"
+                }
+            ]
+        },
+        "views": {
+            "sidebar_mp": [
+                {
+                    "type": "webview",
+                    "id": "mpSidebarView",
+                    "name": "main",
+                    "dataProvider": "mpSidebarProvider"
+                }
+            ]
+        },
+        "dataProviders": [
+            {
+                "id": "mpSidebarProvider",
+                "provides": "mpSidebarView"
+            }
+        ],
+        "commands": [
+            {
+                "command": "matplotlib-pilot.loadtxt",
+                "category": "MP",
+                "title": "loadtxt"
+            },
+            {
+                "command": "matplotlib-pilot.load",
+                "category": "MP",
+                "title": "loadnpy"
+            },
+            {
+                "command": "matplotlib-pilot.defineCustomTemplate",
+                "category": "MP",
+                "title": "define custom template"
+            },
+            {
+                "command": "matplotlib-pilot.modifySidebar",
+                "category": "MP",
+                "title": "modify sidebar"
+            },
+            {
+                "command": "matplotlib-pilot.refreshSidebar",
+                "category": "MP",
+                "title": "refresh sidebar"
+            }
+        ],
+        "configuration": {
+            "title": "Matplotlib Pilot",
+            "properties": {
+                "matplotlib-pilot.customTemplateHtml": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Path to custom template html file"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.72.0",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
+        "eslint": "^8.57.0",
+        "typescript": "^5.3.3",
+        "@vscode/test-cli": "^0.0.8",
+        "@vscode/test-electron": "^2.3.9"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.12",
+        "json5": "^2.2.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openlitchi/Matplotlib-Pilot"
+    }
+}
